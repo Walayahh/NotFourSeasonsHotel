@@ -10,7 +10,7 @@ const links = [
   { to: '/agents', label: 'AI Agents', icon: '✦' }
 ]
 
-export default function Sidebar() {
+export default function Sidebar({ onLogout }) {
   const [logoBroken, setLogoBroken] = useState(false)
   const logoAudioRef = useRef(null)
 
@@ -96,6 +96,13 @@ export default function Sidebar() {
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           Demo data · 2026-05
         </div>
+        <button
+          type="button"
+          onClick={onLogout}
+          className="mt-3 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-left text-xs font-semibold text-text-muted transition-colors hover:border-brand-purple/40 hover:bg-white/[0.07] hover:text-white"
+        >
+          Sign out
+        </button>
       </div>
     </aside>
   )
