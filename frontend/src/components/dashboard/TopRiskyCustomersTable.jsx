@@ -14,8 +14,8 @@ export default function TopRiskyCustomersTable({ customers = [] }) {
         </h3>
         <span className="text-xs text-text-muted">{customers.length} shown · sorted by churn score</span>
       </div>
-      <div className="overflow-hidden rounded-xl border border-white/5">
-        <table className="w-full text-sm">
+      <div className="overflow-x-auto rounded-xl border border-white/5">
+        <table className="w-full min-w-[760px] text-sm">
           <thead>
             <tr className="text-xs text-text-muted uppercase tracking-wider bg-white/[0.02]">
               <th className="text-left px-4 py-3 font-medium">Customer</th>

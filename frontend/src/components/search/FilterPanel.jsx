@@ -90,7 +90,7 @@ export default function FilterPanel({ facets, filters, setFilters, onReset }) {
   const arpuRange = facets.ranges?.arpu || { min: 0, max: 300 }
 
   return (
-    <div className="glass p-5 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
+    <div className="glass p-5 xl:sticky xl:top-4 max-h-[520px] xl:max-h-[calc(100vh-2rem)] overflow-y-auto">
       <div className="flex items-center justify-between mb-3">
         <div className="text-sm font-bold">Filters</div>
         <button

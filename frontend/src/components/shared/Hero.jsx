@@ -7,7 +7,7 @@ export default function Hero({ kicker, title, description, status, action, accen
   const grad = accentMap[accent] || accentMap.purple
 
   return (
-    <div className="hero-card glass p-6 mb-6 relative">
+    <div className="hero-card glass p-4 md:p-6 mb-6 relative">
       <div className="relative z-10 flex items-end justify-between gap-5 flex-wrap">
         <div className="flex-1 min-w-0">
           {kicker && (
@@ -23,7 +23,7 @@ export default function Hero({ kicker, title, description, status, action, accen
           )}
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-3 shrink-0 flex-wrap">
           {action}
           {status && <div className="status-pill">{status}</div>}
         </div>

@@ -148,8 +148,8 @@ export default function AskAnything() {
         accent="blue"
       />
 
-      <div className="grid grid-cols-[1fr_280px] gap-5 items-start">
-        <div className="glass flex flex-col" style={{ height: 'calc(100vh - 200px)' }}>
+      <div className="grid grid-cols-1 xl:grid-cols-[1fr_280px] gap-5 items-start">
+        <div className="glass flex flex-col min-h-[520px] xl:min-h-0" style={{ height: 'min(720px, calc(100vh - 200px))' }}>
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-4">
             {history.length === 0 && (
               <div className="h-full flex flex-col items-center justify-center text-center px-6">
@@ -170,13 +170,13 @@ export default function AskAnything() {
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {m.role === 'user' ? (
                   <div
-                    className="max-w-[80%] px-4 py-2.5 rounded-2xl text-sm text-white"
+                    className="max-w-[92%] md:max-w-[80%] px-4 py-2.5 rounded-2xl text-sm text-white"
                     style={{ background: 'linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%)' }}
                   >
                     {m.text}
                   </div>
                 ) : (
-                  <div className="max-w-[90%] w-full bg-white/[0.03] border border-white/10 rounded-2xl p-4">
+                  <div className="max-w-[96%] md:max-w-[90%] w-full bg-white/[0.03] border border-white/10 rounded-2xl p-4">
                     {m.error ? (
                       <div className="text-risk-high text-sm">⚠ {m.error}</div>
                     ) : (
@@ -220,14 +220,14 @@ export default function AskAnything() {
 
           <form
             onSubmit={(e) => { e.preventDefault(); ask() }}
-            className="border-t border-white/10 p-3 flex gap-2"
+            className="border-t border-white/10 p-3 flex flex-wrap sm:flex-nowrap gap-2"
           >
             <input
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Ask about customers, churn, revenue, complaints, anything…"
-              className="flex-1 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm placeholder:text-text-muted focus:outline-none focus:border-brand-purple/50"
+              className="min-w-0 flex-[1_1_220px] bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm placeholder:text-text-muted focus:outline-none focus:border-brand-purple/50"
             />
             <button
               type="button"
@@ -267,7 +267,7 @@ export default function AskAnything() {
           </form>
         </div>
 
-        <div className="glass p-4 sticky top-4">
+        <div className="glass p-4 xl:sticky xl:top-4">
           <div className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-3">
             Try one of these
           </div>

@@ -299,7 +299,7 @@ export default function SearchAnalytics({ filters }) {
         className="space-y-3"
       >
         {/* KPI strip */}
-        <motion.div variants={cardVariants} className="grid grid-cols-5 gap-3">
+        <motion.div variants={cardVariants} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3">
           <StatTile
             label="Cohort size"
             value={total.toLocaleString()}
@@ -338,7 +338,7 @@ export default function SearchAnalytics({ filters }) {
         </motion.div>
 
         {/* Risk donut + ARPU × Churn scatter */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
           <ChartCard title="Risk mix" accent="#8B5CF6">
             <RiskDonut data={aggs?.risk_distribution || []} total={total} />
             <div className="flex justify-center gap-3 mt-2 text-[11px]">
@@ -356,14 +356,14 @@ export default function SearchAnalytics({ filters }) {
             title="ARPU × Churn map"
             subtitle="Top-right = high value at risk (priority retention)"
             accent="#3B82F6"
-            className="col-span-2"
+            className="xl:col-span-2"
           >
             <ARPUChurnScatter data={aggs?.scatter_sample || []} />
           </ChartCard>
         </div>
 
         {/* Governorate stack + distribution panels */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
           <ChartCard title="Top governorates · risk stack" accent="#22C55E">
             <GovStackBar data={aggs?.governorate_stack || []} />
           </ChartCard>

@@ -137,10 +137,10 @@ export default function AgentActivityFeed() {
 
       <AgentStatusBar activeAgent={activeAgent} />
 
-      <div className="grid grid-cols-[1.4fr_1fr] gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-[1.4fr_1fr] gap-6">
         <ActivityFeed items={items} />
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <AgentDeepDiveCard title="Churn Risk Agent" accent="#8B5CF6" icon="⚙">
             <div className="text-2xl font-bold mb-1">{kpis.high_risk_customers}</div>
             <div className="text-xs text-text-muted mb-3">High-risk customers</div>

@@ -185,7 +185,7 @@ export default function CampaignStudio() {
             onClearAll={() => setFilters(DEFAULT_FILTERS)}
           />
 
-          <div className="grid grid-cols-[1fr_1fr] gap-5 items-start">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 items-start">
             <AudienceSnapshot preview={preview} />
 
             <div className="glass p-5">
@@ -199,7 +199,7 @@ export default function CampaignStudio() {
                 placeholder="e.g. Reduce churn in VIP segment with priority support + loyalty bonus"
                 className="w-full bg-white/[0.04] border border-white/10 rounded-lg px-3 py-2 text-sm placeholder:text-text-muted focus:outline-none focus:border-brand-purple/50 resize-none"
               />
-              <div className="flex items-center justify-between mt-3">
+              <div className="flex items-start sm:items-center justify-between gap-3 mt-3 flex-col sm:flex-row">
                 <div className="text-[11px] text-text-muted">
                   {preview ? `${preview.size.toLocaleString()} customers in audience` : 'Loading audience…'}
                 </div>
