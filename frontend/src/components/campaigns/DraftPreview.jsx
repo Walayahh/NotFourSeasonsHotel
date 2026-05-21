@@ -88,7 +88,7 @@ export default function DraftPreview({ result, drafting, onLaunch, onRegenerate,
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
         <ProjectionCard
           label="Audience"
           value={(p.audience_size || 0).toLocaleString()}

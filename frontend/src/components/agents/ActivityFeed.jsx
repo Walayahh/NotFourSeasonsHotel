@@ -3,7 +3,7 @@ import ActivityFeedItem from './ActivityFeedItem.jsx'
 
 export default function ActivityFeed({ items = [] }) {
   return (
-    <div className="glass p-5 h-[700px] overflow-hidden flex flex-col">
+    <div className="glass p-4 md:p-5 h-[520px] xl:h-[700px] overflow-hidden flex flex-col">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider">
           Live Agent Activity

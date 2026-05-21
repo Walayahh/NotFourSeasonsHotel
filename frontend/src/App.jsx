@@ -41,13 +41,13 @@ export default function App() {
     <div className="relative min-h-screen text-text-primary">
       <AnimatedBackground />
       <Sidebar onLogout={logout} />
-      <main className="ml-64 relative z-10">
+      <main className="md:ml-64 relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
             initial="initial" animate="animate" exit="exit"
             variants={pageVariants}
-            className="p-8"
+            className="p-4 md:p-8"
           >
             <Routes location={location}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />

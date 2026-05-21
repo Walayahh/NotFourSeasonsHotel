@@ -213,6 +213,24 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
 .logo-stage:hover .orbital-ring-2 { animation-duration: 6s; border-color: rgba(59, 130, 246, 0.55); }
 .logo-stage:hover .sparkle        { animation-duration: 1.4s; }
 
+@media (max-width: 767px) {
+  .logo-stage {
+    width: 54px;
+    height: 54px;
+    flex: 0 0 54px;
+  }
+  .logo-stage .logo-orb {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 12px;
+  }
+  .logo-aura,
+  .orbital-ring,
+  .sparkle {
+    display: none;
+  }
+}
+
 /* Active nav link accent bar */
 .nav-link-active::before {
   content: '';

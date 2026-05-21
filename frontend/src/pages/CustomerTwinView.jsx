@@ -37,7 +37,7 @@ export default function CustomerTwinView() {
   }, [customerId])
 
   return (
-    <div className="grid grid-cols-[280px_1fr] gap-6 page-enter">
+    <div className="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-4 md:gap-6 page-enter">
       <CustomerListPanel />
 
       <div>
@@ -62,14 +62,14 @@ export default function CustomerTwinView() {
 
             <TwinSignalCards signals={profile.twin_signals} />
 
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="col-span-2">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-6">
+              <div className="xl:col-span-2">
                 <UsageTimelineChart months={profile.monthly_summary} />
               </div>
               <SatisfactionChart surveys={profile.satisfaction} />
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-6">
               <ComplaintHistory
                 complaints={profile.recent_complaints}
                 support={profile.support_history}

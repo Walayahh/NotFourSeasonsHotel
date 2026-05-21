@@ -22,7 +22,7 @@ export default function CustomerListPanel() {
   }, [search, risk])
 
   return (
-    <div className="glass p-4 sticky top-4 max-h-[calc(100vh-2rem)] flex flex-col">
+    <div className="glass p-4 xl:sticky xl:top-4 max-h-[520px] xl:max-h-[calc(100vh-2rem)] flex flex-col">
       <h4 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-3">
         Customers
       </h4>

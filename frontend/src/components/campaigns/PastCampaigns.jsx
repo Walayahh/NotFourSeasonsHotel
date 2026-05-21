@@ -22,7 +22,7 @@ export default function PastCampaigns() {
 
   return (
     <div className="space-y-5">
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         <div className="glass p-4">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-text-muted">Campaigns run</div>
           <div className="text-2xl font-bold mt-1">{summary.total_campaigns?.toLocaleString()}</div>
@@ -60,11 +60,11 @@ export default function PastCampaigns() {
         </div>
       </div>
 
-      <div className="glass overflow-hidden">
+      <div className="glass overflow-x-auto">
         <div className="px-5 py-3 border-b border-white/5">
           <div className="text-sm font-bold">Campaigns</div>
         </div>
-        <table className="w-full text-sm">
+        <table className="w-full min-w-[860px] text-sm">
           <thead>
             <tr className="text-left text-[11px] uppercase tracking-wider text-text-muted border-b border-white/5">
               <th className="px-4 py-3">Campaign</th>

@@ -35,8 +35,8 @@ export default function ResultsTable({ customers, loading, pageKey }) {
     )
   }
   return (
-    <div className="glass overflow-hidden">
-      <table className="w-full text-sm">
+    <div className="glass overflow-x-auto">
+      <table className="w-full min-w-[820px] text-sm">
         <thead>
           <tr className="text-left text-[11px] uppercase tracking-wider text-text-muted border-b border-white/5 bg-white/[0.02]">
             <th className="px-4 py-3">Customer</th>

@@ -33,7 +33,7 @@ export default function TopFilterBar({ facets, filters, setFilters }) {
 
   return (
     <div className="glass p-5 space-y-4">
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-3">
         <div className="flex-1 relative">
           <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">⌕</span>
           <input
@@ -57,7 +57,7 @@ export default function TopFilterBar({ facets, filters, setFilters }) {
 
       <div className="space-y-2.5">
         <FilterGroup title="Risk & value" accent="#EF4444">
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
             <MultiSelectDropdown
               label="Risk level"
               options={facets.risk_levels}
@@ -86,7 +86,7 @@ export default function TopFilterBar({ facets, filters, setFilters }) {
         </FilterGroup>
 
         <FilterGroup title="Demographics" accent="#8B5CF6">
-          <div className="grid grid-cols-5 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-2">
             <MultiSelectDropdown
               label="Customer segment"
               options={facets.customer_segments}
@@ -121,7 +121,7 @@ export default function TopFilterBar({ facets, filters, setFilters }) {
         </FilterGroup>
 
         <FilterGroup title="Plan & status" accent="#3B82F6">
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <MultiSelectDropdown
               label="Plan category"
               options={facets.plan_categories}
@@ -144,7 +144,7 @@ export default function TopFilterBar({ facets, filters, setFilters }) {
         </FilterGroup>
       </div>
 
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2">
         <DualRangeSlider
           label="Churn score"
           icon="◐"

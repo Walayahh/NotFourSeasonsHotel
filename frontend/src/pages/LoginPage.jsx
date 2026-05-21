@@ -26,21 +26,21 @@ export default function LoginPage({ onLogin }) {
       <div className="login-grid" aria-hidden="true" />
       <div className="login-scanline" aria-hidden="true" />
 
-      <main className="relative z-10 min-h-screen grid grid-cols-[1.05fr_440px] gap-12 items-center px-12 py-10">
+      <main className="relative z-10 min-h-screen grid grid-cols-1 lg:grid-cols-[1.05fr_440px] gap-8 lg:gap-12 items-center px-4 sm:px-8 lg:px-12 py-6 lg:py-10">
         <section className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-text-muted mb-8">
             <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_12px_rgba(74,222,128,0.9)]" />
             Secure AI Command Center
           </div>
 
-          <h1 className="text-6xl font-black leading-[0.95] tracking-normal max-w-2xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[0.95] tracking-normal max-w-2xl">
             Zain Customer 360
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-300 max-w-xl">
             Monitor churn, network pressure, campaigns, and customer signals from a single operational workspace.
           </p>
 
-          <div className="mt-10 grid grid-cols-3 gap-3 max-w-2xl">
+          <div className="mt-8 lg:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
             {[
               ['Live KPIs', 'Risk and revenue signals'],
               ['AI Queries', 'Ask the data directly'],

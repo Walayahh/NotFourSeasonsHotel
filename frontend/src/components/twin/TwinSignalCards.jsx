@@ -19,7 +19,7 @@ const arrow = { up: '↑', down: '↓', stable: '→' }
 
 export default function TwinSignalCards({ signals = [] }) {
   return (
-    <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-4 gap-4 mb-6">
+    <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
       {signals.map(s => {
         const st = severityStyle[s.severity] || severityStyle.Low
         return (

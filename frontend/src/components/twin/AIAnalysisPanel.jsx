@@ -103,7 +103,7 @@ export default function AIAnalysisPanel({ customerId, language = 'English' }) {
         </div>
 
         {/* Pipeline progress */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div className="glass !bg-white/[0.02] p-4 !shadow-none">
             <StageRow keyName="churn" stage={stages.churn} statusLabel={statusLabel} />
           </div>

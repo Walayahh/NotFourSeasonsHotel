@@ -49,7 +49,7 @@ export default function ExecutiveDashboard() {
     return (
       <div>
         <h1 className="text-3xl font-bold mb-6">Executive Dashboard</h1>
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
           {[1,2,3,4,5].map(i => (
             <div key={i} className="glass p-6"><SkeletonLoader lines={2} /></div>
           ))}
@@ -67,7 +67,7 @@ export default function ExecutiveDashboard() {
         status="Live data"
       />
 
-      <motion.div variants={grid} initial="hidden" animate="visible" className="grid grid-cols-5 gap-4 mb-6">
+      <motion.div variants={grid} initial="hidden" animate="visible" className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4 mb-6">
         <KPICard label="High-Risk Customers" value={kpis.high_risk_customers} accent="red" sublabel="active accounts" />
         <KPICard label="Revenue at Risk" value={kpis.revenue_at_risk_jod} suffix="JOD" accent="purple" sublabel="monthly ARPU" />
         <KPICard label="Recent Network Events" value={kpis.recent_network_events} accent="amber" sublabel="last 14 days" />
@@ -75,13 +75,13 @@ export default function ExecutiveDashboard() {
         <KPICard label="Total Customers" value={kpis.total_customers} accent="green" sublabel="across Jordan" />
       </motion.div>
 
-      <motion.div variants={grid} initial="hidden" animate="visible" className="grid grid-cols-3 gap-4 mb-6">
+      <motion.div variants={grid} initial="hidden" animate="visible" className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-6">
         <ChurnDistributionChart data={kpis.risk_distribution} />
-        <div className="col-span-2"><RevenueByRegionChart regions={regions} /></div>
+        <div className="xl:col-span-2"><RevenueByRegionChart regions={regions} /></div>
       </motion.div>
 
-      <motion.div variants={grid} initial="hidden" animate="visible" className="grid grid-cols-3 gap-4 mb-6">
-        <div className="col-span-2"><TowerMap towers={towers} /></div>
+      <motion.div variants={grid} initial="hidden" animate="visible" className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-6">
+        <div className="xl:col-span-2"><TowerMap towers={towers} /></div>
         <ComplaintTrendChart weeks={trend} />
       </motion.div>
 

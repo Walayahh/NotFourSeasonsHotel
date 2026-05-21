@@ -7,7 +7,7 @@ const AGENTS = [
 
 export default function AgentStatusBar({ activeAgent }) {
   return (
-    <div className="grid grid-cols-4 gap-3 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-6">
       {AGENTS.map(a => {
         const active = activeAgent === a.key
         return (
