@@ -6,10 +6,10 @@ from typing import Optional
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from FourSeasonsHotel.lib.db import query_one, query_many
-from FourSeasonsHotel.lib.routes.customers import SearchFilters, _build_search_query
-from FourSeasonsHotel.lib.routes.agents import _openai
-from FourSeasonsHotel.lib.agents.prompts import CAMPAIGN_DESIGNER_SYSTEM
+from lib.db import query_one, query_many
+from lib.routes.customers import SearchFilters, _build_search_query
+from lib.routes.agents import _openai
+from lib.agents.prompts import CAMPAIGN_DESIGNER_SYSTEM
 
 router = APIRouter()
 

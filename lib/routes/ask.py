@@ -3,9 +3,9 @@ import re
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from FourSeasonsHotel.lib.db import query_many
-from FourSeasonsHotel.lib.routes.agents import _openai
-from FourSeasonsHotel.lib.agents.prompts import ASK_ANYTHING_SYSTEM
+from lib.db import query_many
+from lib.routes.agents import _openai
+from lib.agents.prompts import ASK_ANYTHING_SYSTEM
 
 router = APIRouter()
 

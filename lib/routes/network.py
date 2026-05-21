@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from FourSeasonsHotel.lib.db import query_many
+from lib.db import query_many
 
 router = APIRouter()
 

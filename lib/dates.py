@@ -1,5 +1,5 @@
 from functools import lru_cache
-from FourSeasonsHotel.lib.db import query_scalar
+from lib.db import query_scalar
 
 
 @lru_cache(maxsize=1)

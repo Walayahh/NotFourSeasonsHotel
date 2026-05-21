@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from FourSeasonsHotel.lib.db import query_one, query_many, query_scalar
-from FourSeasonsHotel.lib.dates import data_today, latest_score_month, latest_network_event_date
+from lib.db import query_one, query_many, query_scalar
+from lib.dates import data_today, latest_score_month, latest_network_event_date
 
 router = APIRouter()
 

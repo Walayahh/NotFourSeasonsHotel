@@ -1,8 +1,8 @@
 from typing import Optional
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
-from FourSeasonsHotel.lib.db import query_one, query_many, query_scalar, get_customer_context
-from FourSeasonsHotel.lib.dates import latest_score_month
+from lib.db import query_one, query_many, query_scalar, get_customer_context
+from lib.dates import latest_score_month
 
 router = APIRouter()
 

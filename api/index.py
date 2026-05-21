@@ -7,11 +7,11 @@ _REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, ".."))
 if _REPO_ROOT not in sys.path:
     sys.path.insert(0, _REPO_ROOT)
 
-from FourSeasonsHotel.lib.routes import agents, campaigns, customers, dashboard, network
+from lib.routes import agents, campaigns, customers, dashboard, network
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from FourSeasonsHotel.lib.routes import ask
+from lib.routes import ask
 
 app = FastAPI(title="Zain Customer 360 API")
 
