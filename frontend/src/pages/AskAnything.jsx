@@ -9,19 +9,121 @@ export default function AskAnything() {
   const [history, setHistory] = useState([])
   const [suggestions, setSuggestions] = useState([])
   const [showSQL, setShowSQL] = useState({})
+  const [isListening, setIsListening] = useState(false)
+  const [speechSupported, setSpeechSupported] = useState(true)
   const scrollRef = useRef(null)
+  const recognitionRef = useRef(null)
+  const shouldListenRef = useRef(false)
+  const transcriptBaseRef = useRef('')
+  const questionRef = useRef('')
 
   useEffect(() => {
     api.askSuggestions().then(r => setSuggestions(r.suggestions))
   }, [])
 
   useEffect(() => {
+    questionRef.current = question
+  }, [question])
+
+  useEffect(() => {
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    if (!Recognition) {
+      setSpeechSupported(false)
+      return undefined
+    }
+
+    const recognition = new Recognition()
+    recognition.continuous = true
+    recognition.interimResults = true
+    recognition.lang = 'en-US'
+
+    recognition.onresult = (event) => {
+      let finalText = ''
+      let interimText = ''
+
+      for (let i = 0; i < event.results.length; i++) {
+        const transcript = event.results[i][0]?.transcript || ''
+        if (event.results[i].isFinal) {
+          finalText += transcript
+        } else {
+          interimText += transcript
+        }
+      }
+
+      const base = transcriptBaseRef.current
+      const spacer = base && (finalText || interimText) ? ' ' : ''
+      const nextQuestion = `${base}${spacer}${finalText}${interimText}`.trimStart()
+      questionRef.current = nextQuestion
+      setQuestion(nextQuestion)
+    }
+
+    recognition.onerror = () => {
+      shouldListenRef.current = false
+      setIsListening(false)
+    }
+
+    recognition.onend = () => {
+      if (!shouldListenRef.current) {
+        setIsListening(false)
+        return
+      }
+
+      transcriptBaseRef.current = questionRef.current.trim()
+      try {
+        recognition.start()
+      } catch {
+        shouldListenRef.current = false
+        setIsListening(false)
+      }
+    }
+
+    recognitionRef.current = recognition
+
+    return () => {
+      shouldListenRef.current = false
+      try {
+        recognition.stop()
+      } catch {
+        // Ignore cleanup races when the recognizer was never started.
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
   }, [history, busy])
+
+  const toggleListening = () => {
+    const recognition = recognitionRef.current
+    if (!recognition || busy) return
+
+    if (isListening) {
+      shouldListenRef.current = false
+      recognition.stop()
+      setIsListening(false)
+      return
+    }
+
+    transcriptBaseRef.current = questionRef.current.trim()
+    shouldListenRef.current = true
+    setIsListening(true)
+
+    try {
+      recognition.start()
+    } catch {
+      shouldListenRef.current = false
+      setIsListening(false)
+    }
+  }
 
   const ask = async (q) => {
     const text = (q ?? question).trim()
     if (!text || busy) return
+    if (isListening) {
+      shouldListenRef.current = false
+      recognitionRef.current?.stop()
+      setIsListening(false)
+    }
     setQuestion('')
     const userTurn = { role: 'user', text }
     setHistory(h => [...h, userTurn])
@@ -127,6 +229,33 @@ export default function AskAnything() {
               placeholder="Ask about customers, churn, revenue, complaints, anything…"
               className="flex-1 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-2.5 text-sm placeholder:text-text-muted focus:outline-none focus:border-brand-purple/50"
             />
+            <button
+              type="button"
+              onClick={toggleListening}
+              disabled={!speechSupported || busy}
+              aria-label={isListening ? 'Stop transcribing' : 'Start transcribing'}
+              title={isListening ? 'Stop transcribing' : 'Start transcribing'}
+              className={`w-11 h-11 shrink-0 rounded-xl border flex items-center justify-center transition-all disabled:opacity-40 ${
+                isListening
+                  ? 'bg-risk-high/20 border-risk-high/50 text-risk-high shadow-[0_0_18px_rgba(239,68,68,0.25)]'
+                  : 'bg-white/[0.04] border-white/10 text-text-muted hover:text-white hover:border-brand-purple/40 hover:bg-white/[0.07]'
+              }`}
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <path d="M12 19v3" />
+              </svg>
+            </button>
             <button
               type="submit"
               disabled={!question.trim() || busy}
