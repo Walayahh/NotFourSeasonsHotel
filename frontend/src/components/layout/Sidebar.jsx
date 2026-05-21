@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 const links = [
@@ -12,13 +12,33 @@ const links = [
 
 export default function Sidebar() {
   const [logoBroken, setLogoBroken] = useState(false)
+  const logoAudioRef = useRef(null)
+
+  const playLogoAudio = () => {
+    const audio = logoAudioRef.current
+    if (!audio) return
+
+    audio.currentTime = 0
+    audio.play().catch(() => {
+      // Browsers can block playback until the page has received a user gesture.
+    })
+  }
+
+  const stopLogoAudio = () => {
+    const audio = logoAudioRef.current
+    if (!audio) return
+
+    audio.pause()
+    audio.currentTime = 0
+  }
 
   return (
     <aside className="fixed left-0 top-0 bottom-0 w-64 z-20 glass border-r border-white/10 rounded-none flex flex-col">
       <div className="p-6 border-b border-white/10 flex flex-col items-center text-center relative overflow-hidden">
         <div className="logo-aura" aria-hidden="true" />
+        <audio ref={logoAudioRef} src="/rick-astley-never-gonna-give-you-up.mp3" preload="auto" />
         <Link to="/dashboard" className="flex flex-col items-center gap-3 group w-full relative z-10">
-          <div className="logo-stage">
+          <div className="logo-stage" onMouseEnter={playLogoAudio} onMouseLeave={stopLogoAudio}>
             <span className="sparkle sparkle-1" aria-hidden="true">✦</span>
             <span className="sparkle sparkle-2" aria-hidden="true">✧</span>
             <span className="sparkle sparkle-3" aria-hidden="true">✦</span>
