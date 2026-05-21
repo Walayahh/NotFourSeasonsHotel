@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import Sidebar from './components/layout/Sidebar.jsx'
 import AnimatedBackground from './components/layout/AnimatedBackground.jsx'
 import ExecutiveDashboard from './pages/ExecutiveDashboard.jsx'
@@ -8,6 +9,7 @@ import AgentActivityFeed from './pages/AgentActivityFeed.jsx'
 import AdvancedSearch from './pages/AdvancedSearch.jsx'
 import CampaignStudio from './pages/CampaignStudio.jsx'
 import AskAnything from './pages/AskAnything.jsx'
+import LoginPage from './pages/LoginPage.jsx'
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -17,10 +19,28 @@ const pageVariants = {
 
 export default function App() {
   const location = useLocation()
+  const [isAuthed, setIsAuthed] = useState(() => localStorage.getItem('zain-auth') === 'true')
+
+  useEffect(() => {
+    localStorage.setItem('zain-auth', String(isAuthed))
+  }, [isAuthed])
+
+  const login = () => setIsAuthed(true)
+  const logout = () => setIsAuthed(false)
+
+  if (!isAuthed) {
+    return (
+      <Routes>
+        <Route path="/login" element={<LoginPage onLogin={login} />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    )
+  }
+
   return (
     <div className="relative min-h-screen text-text-primary">
       <AnimatedBackground />
-      <Sidebar />
+      <Sidebar onLogout={logout} />
       <main className="ml-64 relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
@@ -31,6 +51,7 @@ export default function App() {
           >
             <Routes location={location}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/login" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<ExecutiveDashboard />} />
               <Route path="/twin" element={<CustomerTwinView />} />
               <Route path="/twin/:customerId" element={<CustomerTwinView />} />
