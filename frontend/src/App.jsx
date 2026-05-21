@@ -60,6 +60,19 @@ export default function App() {
               <Route path="/campaigns" element={<CampaignStudio />} />
               <Route path="/ask" element={<AskAnything />} />
             </Routes>
+            <div className="md:hidden mt-8 p-3 border border-white/10 bg-bg/80 backdrop-blur-xl rounded-xl text-xs text-text-muted">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                Demo data · 2026-05
+              </div>
+              <button
+                type="button"
+                onClick={logout}
+                className="mt-3 w-full rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-left text-xs font-semibold text-text-muted transition-colors hover:border-brand-purple/40 hover:bg-white/[0.07] hover:text-white"
+              >
+                Sign out
+              </button>
+            </div>
           </motion.div>
         </AnimatePresence>
       </main>

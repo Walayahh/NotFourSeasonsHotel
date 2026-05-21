@@ -102,6 +102,22 @@ export default function LoginPage({ onLogin }) {
           <div className="mt-6 rounded-lg border border-white/10 bg-black/20 px-4 py-3 text-xs text-text-muted">
             Demo access: <span className="text-white font-semibold">admin</span> / <span className="text-white font-semibold">password</span>
           </div>
+
+          <div className="hidden lg:flex mt-5 items-center gap-4 rounded-xl border border-white/10 bg-white/[0.035] p-4">
+            <div className="rounded-lg bg-white p-2 shadow-[0_12px_30px_rgba(0,0,0,0.25)]">
+              <img
+                src="/login-qr.svg"
+                alt="QR code for mobile login"
+                className="w-24 h-24"
+              />
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-white">Open on mobile</div>
+              <div className="mt-1 text-xs leading-5 text-text-muted">
+                Scan to visit the deployed login page.
+              </div>
+            </div>
+          </div>
         </section>
       </main>
     </div>
