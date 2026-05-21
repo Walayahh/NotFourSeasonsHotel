@@ -116,7 +116,7 @@ export default function AdvancedSearch() {
         description="Slice every customer attribute, risk signal, and behavior. Click a row to open the twin."
         status={loading ? 'Searching…' : 'Live data'}
         action={results && (
-          <div className="text-right pr-4 border-r border-white/10">
+          <div className="text-left sm:text-right sm:pr-4 sm:border-r border-white/10">
             <div className="text-2xl font-bold leading-none">{results.total.toLocaleString()}</div>
             <div className="text-[11px] text-text-muted mt-1">
               match · <span className="text-white font-semibold">{fmtJOD(results.total_arpu_jod)}</span> ARPU

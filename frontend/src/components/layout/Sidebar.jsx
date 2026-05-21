@@ -91,7 +91,7 @@ export default function Sidebar({ onLogout }) {
         ))}
       </nav>
 
-      <div className="p-3 md:p-4 border-t border-white/10 text-xs text-text-muted">
+      <div className="hidden md:block md:p-4 md:border-t md:border-white/10 text-xs text-text-muted">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           Demo data · 2026-05
