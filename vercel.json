@@ -4,7 +4,7 @@
   "functions": {
     "api/index.py": {
       "runtime": "@vercel/python@4.3.0",
-      "includeFiles": ["lib/**", "data/*.db"],
+      "includeFiles": "{lib/**,data/*.db}",
       "maxDuration": 10
     }
   },
